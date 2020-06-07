@@ -1,0 +1,24 @@
+version: 0.2
+env:
+  variables:
+    IMAGE_REPO_NAME: "alokmalakar/demoapp"
+
+phases:
+  pre_build:
+    commands:
+      - echo Pulling image from Dockerhub...
+      - REPOSITORY_URI=alokmalakar/demoapp
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - echo Writing image definitions file...
+      - printf '[{"name":"demoapp","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+artifacts:
+    files: imagedefinitions.json
