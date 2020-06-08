@@ -1,7 +1,4 @@
 node  {
-  stage("Delete Dir"){
-    sh('cleanWs()')
-  } 
 stage('Fetch Code Staging') {
   sh('git clone https://github.com/RahulSK1807/demoapp.git')
   sh('pwd')
@@ -9,7 +6,7 @@ stage('Fetch Code Staging') {
 //Stage 1 : Build the docker image.
 
 stage('Build image') {
-  sh('sudo docker build -t asia.gcr.io/fabhotels-development/demoapp ../.')
+  sh('sudo docker build -t asia.gcr.io/fabhotels-development/demoapp1 ../.')
 
 }
 
