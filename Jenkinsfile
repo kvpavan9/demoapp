@@ -1,6 +1,6 @@
 node  {
 stage('Fetch Code Staging') {
-  sh('git clone https://github.com/RahulSK1807/demoapp.git')
+  sh('git clone https://github.com/kvpavan9/demoapp.git')
   sh('pwd')
 }
 //Stage 1 : Build the docker image.
