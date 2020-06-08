@@ -7,7 +7,7 @@ stage('Fetch Code Staging') {
 //Stage 1 : Build the docker image.
 
 stage('Build image') {
-  sh('sudo docker build -t asia.gcr.io/fabhotels-development/demoapp .')
+  sh('sudo docker build -t asia.gcr.io/fabhotels-development/demoapp ../.')
 
 }
 
