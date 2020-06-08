@@ -1,7 +1,7 @@
 node  {
-stage("Delete Dir")
+  stage("Delete Dir"){
   sh "deleteDir()"
-  
+  } 
 stage('Fetch Code Staging') {
   sh('git clone https://github.com/RahulSK1807/demoapp.git')
   sh('pwd')
