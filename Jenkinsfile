@@ -19,4 +19,6 @@ sh('gcloud auth configure-docker')
 sh('sudo docker push asia.gcr.io/fabhotels-development/demoapp')
 }
 
-} 
+}
+    
+}
