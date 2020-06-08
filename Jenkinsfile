@@ -18,5 +18,4 @@ stage('Push image to registry') {
 }
 
 }
-    
-}
+   
