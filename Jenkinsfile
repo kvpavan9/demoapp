@@ -1,4 +1,5 @@
-##### Pipeline Script #####
+pipeline {
+    agent any
 node{
 
 stage('Fetch Code Staging') {
