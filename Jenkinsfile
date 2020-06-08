@@ -1,24 +1,21 @@
-node {
-    def app
+##### Pipeline Script #####
+node{
 
-    stage('Clone repository') {
-        /* repository cloned to our workspace */
+stage('Fetch Code Staging') {
+sh('git clone https://github.com/RahulSK1807/demoapp.git')
+sh('pwd')
+}
+//Stage 1 : Build the docker image.
 
-        checkout scm
-    }
-
-    stage('Build image') {
-        /* To builds the dockerimage */
-        //update your ECR registry URI
-        app = docker.build("https://asia.gcr.io/fabhotel-developement/demoapp")
-    }
-
-    stage('Test image') {
-        /* Try killing some white walkers for testing ;-) */
-
-        app.inside {
-            sh 'echo "Hurray !! Tests passed, Valar Morghulis "'
-        }
-    }
+stage('Build image') {
+sh('sudo docker build -t asia.gcr.io/fabhotels-development/demoapp .')
 
 }
+
+//Stage 2 : Push the image to GCR
+stage('Push image to registry') {
+sh('gcloud auth configure-docker')
+sh('sudo docker push asia.gcr.io/fabhotels-development/demoapp')
+}
+
+} 
